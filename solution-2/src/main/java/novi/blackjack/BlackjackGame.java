@@ -2,18 +2,18 @@ package novi.blackjack;
 
 import java.util.Scanner;
 
-public class BlackjackGame {
-    private Scanner inputScanner;
+public abstract class BlackjackGame {
+    protected Scanner inputScanner;
 
-    private boolean gameIsRunning;
+    protected boolean gameIsRunning;
 
-    private Deck deck;
-    private Player player;
-    private Dealer dealer;
+    protected Deck deck;
+    protected Player player;
+    protected Dealer dealer;
 
     public BlackjackGame(Scanner inputScanner) {
         this.inputScanner = inputScanner;
-        this.deck = new Deck();
+        this.deck = new SimpleDeck();
     }
 
     public void playGame() {
@@ -31,7 +31,8 @@ public class BlackjackGame {
         }
     }
 
-    public void runGameLoop() {
+    public abstract void runGameLoop();
+    /*
         renderTableState();
 
         if (dealer.isBust() || dealer.isStaying() && player.getHandValue() > dealer.getHandValue()) {
@@ -54,9 +55,10 @@ public class BlackjackGame {
         if (!dealer.isStaying() && !player.isBust()) {
             dealer.performMove(deck);
         }
-    }
+        */
 
-    private String getNextUserMove() {
+
+    protected String getNextUserMove() {
         while (true) {
             System.out.println("What do you want to do? (hit or stay)");
             String input = inputScanner.nextLine();
@@ -67,7 +69,7 @@ public class BlackjackGame {
         }
     }
 
-    private void renderTableState() {
+    protected void renderTableState() {
         System.out.println("");
         System.out.println("Dealers hand:");
         System.out.println(dealer.renderHand());
