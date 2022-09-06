@@ -18,9 +18,15 @@ public class Player {
             System.out.println("Player is bust");
             return;
         }
-        if (!isStaying()) {
+        if (!isStaying(move)) {
             // hit nog een beurt
-
+            System.out.println("Player wants to hit");
+            hand.addCard(deck.getNextCard());
+            System.out.println("Player score: " + getHandValue());
+        } else {
+            // stay
+            System.out.println("Player is staying");
+            System.out.println("Player score: " + getHandValue());
         }
     }
 
@@ -30,10 +36,17 @@ public class Player {
         }
     }
 
-    public boolean isStaying() {
-        if (getHandValue() < 17) {
+    public void addCardToHand(Card card) {
+        hand.addCard(card);
+    }
+
+    public boolean isStaying(String move) {
+        if (move.equals("hit")) {
             return false;
+        } else if (move.equals("stay")) {
+            return true;
         }
+        System.out.println("error");
         return true;
     }
 
@@ -50,6 +63,6 @@ public class Player {
     }
 
     public String renderHand() {
-        return "";
+        return hand.render();
     }
 }

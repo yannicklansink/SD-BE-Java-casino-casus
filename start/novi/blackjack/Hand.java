@@ -6,8 +6,9 @@ public class Hand {
 
     private ArrayList<Card> cardList;
 
-    public Hand() {
 
+    public Hand() {
+        cardList = new ArrayList<Card>();
     }
 
     public void addCard(Card card) {
@@ -24,10 +25,9 @@ public class Hand {
     }
 
     public String render() {
-        // ?
         StringBuilder string = new StringBuilder();
         for (Card card : cardList) {
-            string.append(card.render());
+            string.append(card.render() + "\n");
         }
         return string.toString();
     }

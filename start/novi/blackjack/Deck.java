@@ -60,6 +60,8 @@ public class Deck {
     }
 
     public Card getNextCard() {
-        return cardList.get(cardList.size() -1); // get last card on deck
+        Card card = cardList.get(cardList.size() -1);
+        cardList.remove(cardList.size() -1); // get last card on deck
+        return card;
     }
 }
