@@ -16,7 +16,7 @@ public class BlackJackGame {
         deck = new Deck();
     }
     public void playGame() {
-        // maak deck aan voor het spel
+
 
 
 
